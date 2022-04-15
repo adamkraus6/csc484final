@@ -24,6 +24,15 @@ salary DOUBLE,
 currentlyEmployed BOOL
 );
 
+DROP TABLE IF EXISTS injuryReports;
+CREATE TABLE injuryReports
+(injuryID INT PRIMARY KEY,
+employeeID INT,
+injuryDate DATE,
+description VARCHAR(100),
+FOREIGN KEY (employeeID) REFERENCES employees(employeeID)
+);
+
 DROP TABLE IF EXISTS products;
 CREATE TABLE products
 (productID INT PRIMARY KEY,
@@ -37,6 +46,8 @@ CREATE TABLE orders
 (orderID INT PRIMARY KEY,
 customerID INT,
 employeeID INT,
+placedOn DATE,
+fulfilledON DATE,
 notes VARCHAR(100),
 FOREIGN KEY (customerID) REFERENCES customers(customerID),
 FOREIGN KEY (employeeID) REFERENCES employees(employeeID)
