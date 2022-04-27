@@ -5,6 +5,7 @@ INSERT INTO customers VALUES(101, "Leo", "Paris", "mlbfan01@aol.com", "444555678
 INSERT INTO customers VALUES(102, "Joe", "Random", "jrandom@yahoo.com", "9874461089", "123 This St. Miami FL, 51948");
 INSERT INTO customers VALUES(103, "Alex", "Christiansen", "achrist@gmail.com", "1937618955", "456 That St. Pierre SD, 91740");
 INSERT INTO customers VALUES(104, "Randy", "Compton", "rcomp@aol.com", "9186134870", "789 Other St. Fake Town MA, 10874");
+INSERT INTO customers VALUES(105, "Borat", "Sagdiyev", "greatsuccess@gmail.com", "4206942069", "Kazakhstan");
 
 INSERT INTO employees VALUES(200, "Jose", "Fernandez", "Manager", "9713497134", "97 North St. Fake Town TX, 12312", 12345.0, true);
 INSERT INTO employees VALUES(201, "Cody", "Bacon", "Supervisor", "1398875412", "102 South St. Fake Town SD, 08245", 9176.0, false);
