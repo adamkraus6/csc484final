@@ -4,7 +4,7 @@ use warehouse;
 
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers
-(customerID INT PRIMARY KEY,
+(customerID INT PRIMARY KEY AUTO_INCREMENT,
 firstName VARCHAR(15),
 lastName VARCHAR(15),
 email VARCHAR(30),

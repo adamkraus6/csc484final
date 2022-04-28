@@ -15,9 +15,9 @@ def displayMenu():
         print("\t[8]  Mark an order as completed") #
         print("\t[9]  List all orders from a customer") #
         print("\t[10] List all orders fullfilled by an employee") #
-        print("\t[11] List all products in an order")
-        print("\t[12] List all injury reports")
-        print("\t[13] Delete an injury report")
+        print("\t[11] List all products in an order") #
+        print("\t[12] List all injury reports") #
+        print("\t[13] Delete an injury report") #
         print("\t[14] Exit")
         ans = int(input("Enter 1 - 14: "))
 
@@ -56,6 +56,13 @@ while True:
             print("{:<5}\t{:15}\t{:15}\t{:20}\t{:10}\t{:50}".format(row[0], row[1], row[2], row[3], row[4], row[5]))
     elif userChoice == 2:
         print("---Create a new customer---")
+        firstName = input("Enter first name: ")
+        lastName = input("Enter last name: ")
+        email = input("Enter email: ")
+        phoneNum = input("Enter phone number (No dashes): ")
+        address = input("Enter address: ")
+        qry = "insert into customers values(NULL, \"{}\", \"{}\", \"{}\", \"{}\", \"{}\")".format(firstName, lastName, email, phoneNum, address)
+        mycursor.execute(qry)
     elif userChoice == 3:
         print("---List all employees---")
         qry = "select * from employees"
@@ -133,8 +140,26 @@ while True:
             print("{:<5}\t{:<25}\t{:<25}\t{:10}\t{:10}".format(row[0], row[1], row[2], row[3].strftime("%m/%d/%Y"), date_test(row[4]), row[5]))
     elif userChoice == 11:
         print("---List all products in an order---")
+        id = int(input("Enter the order ID: "))
+        qry = "select p.productName, numberOrdered, numberFulfilled from orderItems oi, products p where orderID={} and oi.productID = p.productID;".format(id)
+        mycursor.execute(qry)
+        result = mycursor.fetchall()
+
+        print("{:50}\t{:20}\t{:20}".format("Product Name", "Number Ordered", "Number Fulfilled"))
+        for row in result:
+            print("{:50}\t{:<20}\t{:<20}".format(row[0], row[1], row[2]))
     elif userChoice == 12:
         print("---List all injury reports---")
+        qry = "select * from injuryReports"
+        mycursor.execute(qry)
+        result = mycursor.fetchall()
+
+        print("{:5}\t{:30}\t{:10}\t{:5}".format("ID", "Person Injured (Employee ID)", "Injury Date", "Description"))
+        for row in result:
+            print("{:<5}\t{:<30}\t{:<10}\t{:5}".format(row[0], row[1], row[2].strftime("%m/%d/%Y"), row[3]))
     elif userChoice == 13:
         print("---Delete an injury report---")
+        id = int(input("Enter the injury report ID: "))
+        qry = "delete from injuryReports where injuryID={}".format(id)
+        mycursor.execute(qry)
     
