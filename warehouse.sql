@@ -47,7 +47,7 @@ CREATE TABLE orders
 customerID INT,
 employeeID INT,
 placedOn DATE,
-fulfilledON DATE,
+fulfilledOn DATE,
 notes VARCHAR(100),
 FOREIGN KEY (customerID) REFERENCES customers(customerID),
 FOREIGN KEY (employeeID) REFERENCES employees(employeeID)
